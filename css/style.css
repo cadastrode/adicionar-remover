@@ -113,5 +113,13 @@ span{
     display: flex;
     justify-content: space-between;
 }
+#m1, #m2, #m3, #m4{
+    display:none;
+    margin-top: 5px;
+    
+}
+.men{
+    color: rgba(255, 0, 0, 0.705);
+}
 
 
