@@ -1,3 +1,4 @@
+
 const formulario =document.forms[0]
 var inp1= formulario.elements[0]
 var inp2= formulario.elements[1]
@@ -26,9 +27,8 @@ if(inp4.value!=""){
 //função de tratativas de erro
 
 // função adicionar usuários
-function add(event){
+async function add(event){
     event.preventDefault(); 
-    
 
     if(inp1.value==""){
         mensagem1.style.display="block"
@@ -56,13 +56,24 @@ function add(event){
     }
      if((inp1.value!="")&&(inp2.value!="")&&(inp3.value!="")&&(inp4.value!=""))
     {
-         
-        fetch("https://my-json-server.typicode.com/typicode/demo/db", {
+        
+       nome = inp1.value
+       email = inp2.value
+       telefone = inp3.value
+       pdv = inp4.value
+    
+        
+        fetch("https://63d14a1e3f08e4a8ff94b19e.mockapi.io/repos", {
             method: 'POST',
             Headers:{
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({nome:"edspon", email:"eds@gma.com",telefone:"19971282781",pdv:"035643"})
+            body: JSON.stringify({
+                nome:nome,
+                email:email,
+                telefone: telefone,
+                pdv:pdv
+            })
         })
         .then(function(response){
             if(!response.ok){
@@ -70,8 +81,8 @@ function add(event){
             }
             return response.json()
         })
-        .then(function(usu){
-            console.log(usu)
+        .then(function(repos){
+            console.log(repos)
         })
         .catch(function(error){
             console.log("Aconteceu um Erro" + error)
